@@ -1,14 +1,19 @@
-package org.example.model;
+package org.example.service;
+
+import org.example.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Catalogo {
-    private List<Musica> midias;
+    private List<Midia> midias;
 
     public Catalogo() {
         midias = new ArrayList<>();
         gerarMusicas();
+        gerarPodcasts();
+        gerarAudioBooks();
     }
 
     private void gerarMusicas() {
@@ -130,13 +135,136 @@ public class Catalogo {
         midias.add(new Musica("Don't Stop Believin'", "Journey", Genero.ROCK, 1060));
     }
 
-    public List<Musica> getMusicas() {
+    private void gerarPodcasts() {
+        midias.add(new Podcast("Café da Manhã", "Folha de S.Paulo & Nexo Jornal", 1200));
+        midias.add(new Podcast("NerdCast", "Jovem Nerd", 3600));
+        midias.add(new Podcast("Mamilos", "B9", 2700));
+        midias.add(new Podcast("O Assunto", "Globo News", 900));
+        midias.add(new Podcast("Projeto Humanos", "Ivan Mizanzuk", 1800));
+        midias.add(new Podcast("Xadrez Verbal", "Rabiscando o Mundo", 2400));
+        midias.add(new Podcast("AntiCast", "AntiCast Produções", 3600));
+        midias.add(new Podcast("SciCast", "Podcast Brasil", 1800));
+        midias.add(new Podcast("Dragões de Garagem", "Dragões de Garagem", 2100));
+        midias.add(new Podcast("História em Meia Hora", "RdioCast", 2100));
+        midias.add(new Podcast("Mano a Mano", "Mano Brown", 3600));
+        midias.add(new Podcast("Saia Justa", "GNT", 2700));
+        midias.add(new Podcast("Folha Ponto a Ponto", "Folha de S.Paulo", 1200));
+        midias.add(new Podcast("O Nome Disso é Mundo", "Sociedade Brasileira de Psicologia", 1500));
+        midias.add(new Podcast("RapaduraCast", "RapaduraCast", 3600));
+        midias.add(new Podcast("Cultura Pop", "Cultura FM", 1800));
+        midias.add(new Podcast("Essa História..., Produzida pela Rádio Novelo", "Rádio Novelo", 2700));
+        midias.add(new Podcast("PodSquad", "PodSquad", 3000));
+        midias.add(new Podcast("Filhos da Pátria", "PodTV", 1800));
+        midias.add(new Podcast("FrankenCast", "Frankenstein Studio", 2400));
+        midias.add(new Podcast("Lado B da História", "Lado B", 2100));
+        midias.add(new Podcast("Crítica Literária", "Leitura Brasileira", 1500));
+        midias.add(new Podcast("Tecnocast", "Tecnoblog", 3600));
+        midias.add(new Podcast("Loop Matinal", "Loop Infinito", 900));
+        midias.add(new Podcast("Mindcast", "Montsegur Academy", 2700));
+        midias.add(new Podcast("PodPah", "PodPah", 4200));
+        midias.add(new Podcast("Imagina Juntas", "Dani Noce", 2400));
+        midias.add(new Podcast("Confins do Universo", "Confins", 3600));
+        midias.add(new Podcast("Boa Noite Internet", "Arte 1", 1800));
+        midias.add(new Podcast("Jornada Literária", "Biblioteca Sonora", 2100));
+        midias.add(new Podcast("Tô Pensando em", "Portal 66", 2700));
+        midias.add(new Podcast("Meu Nome é Boni", "GNT", 3000));
+        midias.add(new Podcast("Escriba", "Escriba Studio", 1500));
+        midias.add(new Podcast("Turma da Mônica Cast", "Maurício de Sousa Produções", 1800));
+        midias.add(new Podcast("Mamilos Jr.", "B9 Kids", 1200));
+        midias.add(new Podcast("Beyond The Toys", "Autêntica", 3600));
+        midias.add(new Podcast("PodDelas", "Portal Delas", 2400));
+        midias.add(new Podcast("Reflexões Noturnas", "Noite & Cia", 2700));
+        midias.add(new Podcast("Caixa de Histórias", "Historiamor", 1800));
+        midias.add(new Podcast("Ciência Todo Dia", "C2D", 2100));
+        midias.add(new Podcast("Sarau Virtual", "Arte Sonora", 3000));
+        midias.add(new Podcast("Relendo Clássicos", "Clássicos & Companhia", 2700));
+        midias.add(new Podcast("Mind The Product Brasil", "mtpbrasil", 3600));
+        midias.add(new Podcast("Grátis & Pago", "Economia Hoje", 2400));
+        midias.add(new Podcast("Astronomia pelo Brasil", "Observatório Nacional", 1800));
+        midias.add(new Podcast("Editoras Independentes", "Livro Livre", 2100));
+        midias.add(new Podcast("Cinema em Crise", "Crítica Cinematográfica BR", 3000));
+        midias.add(new Podcast("Teatro Hoje", "Palco & Tela", 1800));
+        midias.add(new Podcast("Moda e Sociedade", "Trama Cultural", 2700));
+        midias.add(new Podcast("Grandes Planos", "Fotografia BR", 1500));
+
+    }
+
+    private void gerarAudioBooks() {
+        midias.add(new AudioBook("O Alquimista", "Paulo Coelho", 28800));
+        midias.add(new AudioBook("Grande Sertão: Veredas", "João Guimarães Rosa", 54000));
+        midias.add(new AudioBook("Dom Casmurro", "Machado de Assis", 32400));
+        midias.add(new AudioBook("Memórias Póstumas de Brás Cubas", "Machado de Assis", 30000));
+        midias.add(new AudioBook("Vidas Secas", "Graciliano Ramos", 27600));
+        midias.add(new AudioBook("Capitães da Areia", "Jorge Amado", 36000));
+        midias.add(new AudioBook("Iracema", "José de Alencar", 25200));
+        midias.add(new AudioBook("Os Sertões", "Euclides da Cunha", 60000));
+        midias.add(new AudioBook("O Cortiço", "Aluísio Azevedo", 28800));
+        midias.add(new AudioBook("Auto da Compadecida", "Ariano Suassuna", 18000));
+        midias.add(new AudioBook("A Hora da Estrela", "Clarice Lispector", 19800));
+        midias.add(new AudioBook("Felicidade Clandestina", "Clarice Lispector", 16200));
+        midias.add(new AudioBook("Ensaio Sobre a Cegueira", "José Saramago", 39600));
+        midias.add(new AudioBook("O Primo Basílio", "Eça de Queirós", 33000));
+        midias.add(new AudioBook("Senhora", "José de Alencar", 30000));
+        midias.add(new AudioBook("A Menina que Roubava Livros", "Markus Zusak", 42000));
+        midias.add(new AudioBook("A Arte da Guerra", "Sun Tzu", 14400));
+        midias.add(new AudioBook("Sapiens: Uma Breve História da Humanidade", "Yuval Noah Harari", 52200));
+        midias.add(new AudioBook("O Pequeno Príncipe", "Antoine de Saint-Exupéry", 12600));
+        midias.add(new AudioBook("Harry Potter e a Pedra Filosofal", "J.K. Rowling", 32400));
+        midias.add(new AudioBook("O Hobbit", "J.R.R. Tolkien", 43200));
+        midias.add(new AudioBook("Memórias de um Sargento de Milícias", "Manuel Antônio de Almeida", 19200));
+        midias.add(new AudioBook("A Moreninha", "Joaquim Manuel de Macedo", 21000));
+        midias.add(new AudioBook("O Guarani", "José de Alencar", 30000));
+        midias.add(new AudioBook("O Ateneu", "Raul Pompeia", 28800));
+        midias.add(new AudioBook("A Cartomante", "Machado de Assis", 6000));
+        midias.add(new AudioBook("O Pagador de Promessas", "Dias Gomes", 24000));
+        midias.add(new AudioBook("Chico Rei", "Bernardo Guimarães", 20400));
+        midias.add(new AudioBook("O Mágico de Oz", "L. Frank Baum", 25200));
+        midias.add(new AudioBook("O Nome da Rosa", "Umberto Eco", 54000));
+        midias.add(new AudioBook("Os Lusíadas", "Luís de Camões", 72000));
+        midias.add(new AudioBook("Encontro Marcado", "Fernando Sabino", 18000));
+        midias.add(new AudioBook("Minha Vida de Solteiro", "Jonathan Littell", 36000));
+        midias.add(new AudioBook("A Metamorfose", "Franz Kafka", 10200));
+        midias.add(new AudioBook("O Mundo de Sofia", "Jostein Gaarder", 46800));
+        midias.add(new AudioBook("Crime e Castigo", "Fiódor Dostoiévski", 60000));
+        midias.add(new AudioBook("1984", "George Orwell", 39600));
+        midias.add(new AudioBook("Admirável Mundo Novo", "Aldous Huxley", 36000));
+        midias.add(new AudioBook("Jane Eyre", "Charlotte Brontë", 54000));
+        midias.add(new AudioBook("Romeu e Julieta", "William Shakespeare", 15000));
+        midias.add(new AudioBook("O Morro dos Ventos Uivantes", "Emily Brontë", 43200));
+        midias.add(new AudioBook("O Conde de Monte Cristo", "Alexandre Dumas", 90000));
+        midias.add(new AudioBook("Os Miseráveis", "Victor Hugo", 120000));
+        midias.add(new AudioBook("A Cabana", "William P. Young", 39600));
+        midias.add(new AudioBook("O Código Da Vinci", "Dan Brown", 43200));
+        midias.add(new AudioBook("A Cabana", "William P. Young", 39600));
+        midias.add(new AudioBook("Extraordinário", "R.J. Palacio", 20400));
+        midias.add(new AudioBook("O Pequeno Príncipe", "Antoine de Saint-Exupéry", 12600));
+        midias.add(new AudioBook("A Culpa é das Estrelas", "John Green", 25800));
+        midias.add(new AudioBook("O Segredo", "Rhonda Byrne", 19800));
+    }
+
+    public List<Midia> getMidias() {
         return midias;
     }
 
     public void exibirCatalogo() {
-        for (Musica midia : midias) {
+        for (Midia midia : midias) {
             System.out.println(midia);
         }
+    }
+
+    public List<Midia> buscarMidiaPorTitulo(String titulo) {
+        return getMidias().stream().filter(midia -> midia.getTitulo().equalsIgnoreCase(titulo)).collect(Collectors.toList());
+    }
+
+    public List<Midia> buscarMidiaPorArtista(String artista) {
+        return getMidias().stream().filter(midia -> midia.getArtista().equalsIgnoreCase(artista)).collect(Collectors.toList());
+    }
+
+    public List<Midia> buscarMidiaPorGenero(Genero genero) {
+        return getMidias().stream()
+                .filter(midia ->  midia instanceof Musica)
+                .map(midia -> (Musica) midia)
+                .filter(midia -> midia.getGenero().equals(genero))
+                .collect(Collectors.toList());
     }
 }

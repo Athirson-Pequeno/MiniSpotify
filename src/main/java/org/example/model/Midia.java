@@ -6,13 +6,11 @@ public abstract class Midia {
 
     private String titulo;
     private String artista;
-    private Genero genero;
     private int duracao;
 
-    public Midia(String titulo, String artista, Genero genero, int duracao) {
+    public Midia(String titulo, String artista, int duracao) {
         this.titulo = titulo;
         this.artista = artista;
-        this.genero = genero;
         this.duracao = duracao;
     }
 
@@ -32,14 +30,6 @@ public abstract class Midia {
         this.artista = artista;
     }
 
-    public Genero getGenero() {
-        return genero;
-    }
-
-    public void setGenero(Genero genero) {
-        this.genero = genero;
-    }
-
     public int getDuracao() {
         return duracao;
     }
@@ -52,21 +42,25 @@ public abstract class Midia {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Midia midia)) return false;
-        return duracao == midia.duracao && Objects.equals(titulo, midia.titulo) && Objects.equals(artista, midia.artista) && genero == midia.genero;
+        return duracao == midia.duracao && Objects.equals(titulo, midia.titulo) && Objects.equals(artista, midia.artista);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(titulo, artista, genero, duracao);
+        return Objects.hash(titulo, artista, duracao);
+    }
+
+    public String formatarDuracao(int totalSegundos) {
+        int horas = totalSegundos / 3600;
+        int minutos = (totalSegundos % 3600) / 60;
+        int segundos = totalSegundos % 60;
+
+        return String.format("%02d:%02d:%02d", horas, minutos, segundos);
     }
 
     @Override
     public String toString() {
-        return "Midia{" +
-                "titulo='" + titulo + '\'' +
-                ", artista='" + artista + '\'' +
-                ", genero=" + genero +
-                ", duracao=" + duracao +
-                '}';
+        String texto = "———————————————————————————————————————————————————————————————————————————————————————————————————————\n"+ "»  "+titulo + " - " + artista + " - " + formatarDuracao(duracao);
+        return texto;
     }
 }

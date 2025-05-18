@@ -9,7 +9,10 @@ public class Usuario {
     private String email;
     private List<Playlist> playlists;
 
-    public Usuario(String nome, String email) {}
+    public Usuario(String nome, String email) {
+        this.nome = nome;
+        this.email = email;
+    }
 
     public String getNome() {
         return nome;
@@ -48,11 +51,11 @@ public class Usuario {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Usuario usuario)) return false;
-        return Objects.equals(nome, usuario.nome) && Objects.equals(email, usuario.email) && Objects.equals(playlists, usuario.playlists);
+        return Objects.equals(nome, usuario.nome) && Objects.equals(email, usuario.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, email, playlists);
+        return Objects.hash(nome, email);
     }
 }

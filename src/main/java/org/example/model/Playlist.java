@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Playlist {
 
-    private List<Midia> midia = new ArrayList<Midia>();
+    private List<Midia> midias = new ArrayList<>();
     private String titulo;
     private Usuario usuario;
 
@@ -23,16 +23,36 @@ public class Playlist {
         this.usuario = usuario;
     }
 
-    public List<Midia> getMidia() {
-        return midia;
+    public List<Midia> getMidias() {
+        return midias;
     }
 
-    public void addMidiaAPlaylist(Midia midia) {
-        this.midia.add(midia);
+    public boolean addMidiaAPlaylist(Midia midia) {
+        if (midia instanceof Musica || midia instanceof Podcast) {
+            midias.add(midia);
+            return true;
+        } else {
+            System.out.println("Somente músicas e podcasts podem ser adicionados à playlist.");
+            return false;
+        }
     }
 
-    public void removeMidiaAPlaylist(Midia midia) {
-        this.midia.remove(midia);
+    public boolean removeMidiaAPlaylist(int index) {
+        try {
+            midias.remove(index);
+        }catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean removeMidiaAPlaylist(Midia midia) {
+        try {
+            midias.remove(midia);
+        }catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
     public String getTitulo() {
@@ -43,10 +63,27 @@ public class Playlist {
         this.titulo = titulo;
     }
 
+
+    public int getDuracao(){
+        int duracaoTotal = 0;
+
+        for (Midia media : midias) {
+            duracaoTotal+= media.getDuracao();
+        }
+
+        return duracaoTotal;
+    }
+
+    public void exibirMusicas(){
+        for(int i = 0; i < midias.size(); i++){
+            System.out.println(i + " - " + midias.get(i));
+        }
+    }
+
     @Override
     public String toString() {
         return "Playlist{" +
-                "midia=" + midia +
+                "midias=" + midias +
                 ", titulo='" + titulo + '\'' +
                 ", usuario=" + usuario +
                 '}';
@@ -56,27 +93,12 @@ public class Playlist {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Playlist playlist)) return false;
-        return Objects.equals(midia, playlist.midia) && Objects.equals(titulo, playlist.titulo) && Objects.equals(usuario, playlist.usuario);
+        return Objects.equals(midias, playlist.midias) && Objects.equals(titulo, playlist.titulo) && Objects.equals(usuario, playlist.usuario);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(midia, titulo, usuario);
+        return Objects.hash(midias, titulo, usuario);
     }
 
-    public int getDuracao(){
-        int duracaoTotal = 0;
-
-        for (Midia media : midia) {
-            duracaoTotal+= media.getDuracao();
-        }
-
-        return duracaoTotal;
-    }
-
-    public void exibirMusicas(){
-        for (Midia media : midia) {
-            System.out.println(media);
-        }
-    }
 }
